@@ -1,0 +1,25 @@
+import actividades.*
+import socios.*
+
+describe "Test socio Roque y Ana"{
+	const playa_1 = new ViajesPlaya (largoPlaya=1000)
+	const playa_2 = new ViajesPlaya (largoPlaya=2000)
+	const clase = new ClaseGimnasia()	
+	const roque = new Socio(actvRealizo=[playa_1, playa_2], edad=30, maxActiv=2)
+	const ana = new Socio(actvRealizo=[playa_1, playa_2], edad=30, maxActiv=3)
+
+	
+	test "Roque"{
+		assert.that(roque.adoraSol())
+		assert.equals([playa_2], roque.actvEsforzadas())
+	}
+	test "Agregrar actividad"{
+		assert.throwsException({roque.agregarActv(clase)})
+	}
+	
+	test "Clase de gimnasia para Ana"{
+		ana.agregarActv(clase)
+		assert.notThat(ana.adoraSol())
+		assert.equals([playa_2, clase], ana.actvEsforzadas())
+	}
+}

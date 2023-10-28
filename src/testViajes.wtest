@@ -1,0 +1,68 @@
+import actividades.*
+
+describe "Test viajes"{
+	const ciudad_1 = new ExcursionCiudad (atracciones=4, idioma=#{"quechua", "aymara"})
+	const ciudad_2 = new CiudadTropical (atracciones= 4)
+	const ciudad_3 = new ExcursionCiudad(atracciones= 8,idioma=#{"frances"})
+	const ciudad_4 = new CiudadTropical (atracciones= 8)
+	const ciudad_5 = new CiudadTropical (atracciones= 10)
+	
+	test "Excursion ciudad_1 normal"{
+		assert.equals(2, ciudad_1.diasActividad())
+		assert.notThat(ciudad_1.implicaEsfuerzo())
+		assert.notThat(ciudad_1.sirveBronceo())
+		assert.that(ciudad_1.esInteresante())
+	}	
+		test "Excursion ciudad_2 tropical"{
+		assert.equals(3, ciudad_2.diasActividad())
+		assert.notThat(ciudad_2.implicaEsfuerzo())
+		assert.that(ciudad_2.sirveBronceo())
+	}
+		test "Excursion ciudad_3 normal"{
+		assert.equals(4, ciudad_3.diasActividad())
+		assert.that(ciudad_3.implicaEsfuerzo())
+		assert.notThat(ciudad_3.sirveBronceo())
+		assert.notThat(ciudad_3.esInteresante())
+	}	
+		test "Excursion ciudad_4 tropical"{
+		assert.equals(5, ciudad_4.diasActividad())
+		assert.that(ciudad_4.implicaEsfuerzo())
+		assert.that(ciudad_4.sirveBronceo())
+	}
+		test "Excursion ciudad_5 tropical"{
+		assert.equals(6, ciudad_5.diasActividad())
+		assert.notThat(ciudad_5.implicaEsfuerzo())
+		assert.that(ciudad_5.sirveBronceo())
+	}
+}
+
+describe "Test trekking"{
+	const salida_1 = new SalidaTrekking (kmSendero= 100, diasSol=130)
+	const salida_2 = new SalidaTrekking (kmSendero= 50, diasSol= 240, idioma=#{"feances", "aleman"})
+	const salida_3 = new SalidaTrekking (kmSendero= 250, diasSol=130)
+	
+	test "Salida_1"{
+		assert.equals(2, salida_1.diasActividad())
+		assert.that(salida_1.implicaEsfuerzo())
+		assert.notThat(salida_1.sirveBronceo())
+		assert.notThat(salida_1.esInteresante())
+	}
+	
+		test "Salida_2"{
+		assert.equals(1, salida_2.diasActividad())
+		assert.notThat( salida_2.implicaEsfuerzo())
+		assert.that(salida_2.sirveBronceo())
+		assert.that(salida_2.esInteresante())
+	}
+	
+		test "Salida_3"{
+		assert.equals(5, salida_3.diasActividad())
+		assert.that( salida_3.implicaEsfuerzo())
+		assert.that(salida_3.sirveBronceo())
+	}
+}
+
+
+
+
+
